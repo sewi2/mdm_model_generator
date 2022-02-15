@@ -1,0 +1,7 @@
+jinja2
+django
+prance
+openapi_spec_validator
+djangorestframework
+djangorestframework-camel-case
+-e git+https://github.com/pik-software/pik-django-utils.git@rabbit-test#egg=pik_django_utils

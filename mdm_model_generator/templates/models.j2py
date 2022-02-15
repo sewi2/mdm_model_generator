@@ -1,0 +1,13 @@
+from . import base_models
+
+
+{% for name, definition in definitions.items() %}
+class {{name}}(
+        base_models.Base{{name}}):
+    pass
+{% if not loop.last %}
+
+
+{% endif %}
+{% endfor %}
+

@@ -1,0 +1,13 @@
+from . import base_serializers
+
+
+{% for name, definition in definitions.items() %}
+class {{name}}Serializer(
+        base_serializers.{{name}}BaseSerializer):
+    pass
+{% if not loop.last %}
+
+
+{% endif %}
+{% endfor %}
+
