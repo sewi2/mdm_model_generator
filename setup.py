@@ -18,7 +18,7 @@ with codecs.open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
 setup(
     name='python-mdm-models-generator',
     packages=find_packages(),
-    version='0.1',
+    version='0.1.2',
     license='MIT',
     description='This library allows us to generate django models and drf serializers using an OpenAPI schema',
     long_description=long_description,
@@ -26,7 +26,7 @@ setup(
     author='Dmitry Nikolaev',
     author_email='sewi0018@gmail.com',
     url='https://github.com/sewi2/python-mdm-models-generator',
-    download_url='https://github.com/sewi2/python-mdm-models-generator/archive/refs/tags/0.1.tar.gz',
+    download_url='https://github.com/sewi2/python-mdm-models-generator/archive/refs/tags/0.1.2.tar.gz',
     keywords=['mdm', 'models', 'serializers', 'generator', ],
     install_requires=[requirements],
     python_requires='~=3.6',
