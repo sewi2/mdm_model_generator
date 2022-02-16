@@ -1,16 +1,20 @@
 from setuptools import setup, find_packages
 
+with open('README.md', 'r', encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name='mdm_model_generator',
     packages=find_packages(),
-    version='0.1.6',
+    version='0.1.7',
     license='MIT',
     description='This library allows us to generate django models and drf serializers using an OpenAPI schema',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     author='Dmitry Nikolaev',
     author_email='sewi0018@gmail.com',
     url='https://github.com/sewi2/mdm_model_generator',
-    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.6.tar.gz',
+    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.7.tar.gz',
     keywords=['mdm', 'models', 'serializers', 'generator', ],
     install_requires=[
         'jinja2',
@@ -21,6 +25,7 @@ setup(
         'djangorestframework-camel-case',
     ],
     dependency_links=['https://github.com/pik-software/pik-django-utils.git@rabbit-test#egg=pik_django_utils'],
+    include_package_data=True,
     python_requires='~=3.6',
     classifiers=[  # Optional
         # How mature is this project? Common values are
