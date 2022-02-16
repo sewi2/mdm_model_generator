@@ -1,29 +1,25 @@
 from setuptools import setup, find_packages
 
 
-with open('README.md', 'r', encoding='utf-8') as f:
-    long_description = f.read()
-
-with open('requirements.txt', 'r', encoding='utf-8') as f:
-    requirements = [
-        line for line in f.readlines()
-        if line and not map(line.startswith, ['#', '-e'])
-    ]
-
 setup(
     name='mdm_model_generator',
     packages=find_packages(),
-    version='0.1.5',
+    version='0.1.6',
     license='MIT',
     description='This library allows us to generate django models and drf serializers using an OpenAPI schema',
-    long_description=long_description,
-    long_description_content_type='text/markdown',
     author='Dmitry Nikolaev',
     author_email='sewi0018@gmail.com',
     url='https://github.com/sewi2/mdm_model_generator',
-    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.5.tar.gz',
+    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.6.tar.gz',
     keywords=['mdm', 'models', 'serializers', 'generator', ],
-    install_requires=[requirements],
+    install_requires=[
+        'jinja2',
+        'django',
+        'prance',
+        'openapi_spec_validator',
+        'djangorestframework',
+        'djangorestframework-camel-case',
+    ],
     dependency_links=['https://github.com/pik-software/pik-django-utils.git@rabbit-test#egg=pik_django_utils'],
     python_requires='~=3.6',
     classifiers=[  # Optional
@@ -46,6 +42,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
     ],
 )
