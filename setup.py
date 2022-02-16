@@ -12,13 +12,13 @@ with codecs.open(path.join(here, 'README.md'), encoding='utf-8') as f:
 with codecs.open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
     requirements = [
         line for line in f.readlines()
-        if line and not line.startswith('#')
+        if line and not map(line.startswith, ['#', '-e'])
     ]
 
 setup(
     name='mdm_model_generator',
     packages=find_packages(),
-    version='0.1.3',
+    version='0.1.4',
     license='MIT',
     description='This library allows us to generate django models and drf serializers using an OpenAPI schema',
     long_description=long_description,
@@ -26,9 +26,10 @@ setup(
     author='Dmitry Nikolaev',
     author_email='sewi0018@gmail.com',
     url='https://github.com/sewi2/mdm_model_generator',
-    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.3.tar.gz',
+    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.4.tar.gz',
     keywords=['mdm', 'models', 'serializers', 'generator', ],
     install_requires=[requirements],
+    dependency_links=['https://github.com/pik-software/pik-django-utils.git@rabbit-test#egg=pik_django_utils'],
     python_requires='~=3.6',
     classifiers=[  # Optional
         # How mature is this project? Common values are
