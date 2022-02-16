@@ -1,15 +1,10 @@
-import codecs
-from os import path
-
 from setuptools import setup, find_packages
 
 
-here = path.abspath(path.dirname(__file__))
-
-with codecs.open(path.join(here, 'README.md'), encoding='utf-8') as f:
+with open('README.md', 'r', encoding='utf-8') as f:
     long_description = f.read()
 
-with codecs.open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
+with open('requirements.txt', 'r', encoding='utf-8') as f:
     requirements = [
         line for line in f.readlines()
         if line and not map(line.startswith, ['#', '-e'])
@@ -18,7 +13,7 @@ with codecs.open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
 setup(
     name='mdm_model_generator',
     packages=find_packages(),
-    version='0.1.4',
+    version='0.1.5',
     license='MIT',
     description='This library allows us to generate django models and drf serializers using an OpenAPI schema',
     long_description=long_description,
@@ -26,7 +21,7 @@ setup(
     author='Dmitry Nikolaev',
     author_email='sewi0018@gmail.com',
     url='https://github.com/sewi2/mdm_model_generator',
-    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.4.tar.gz',
+    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.5.tar.gz',
     keywords=['mdm', 'models', 'serializers', 'generator', ],
     install_requires=[requirements],
     dependency_links=['https://github.com/pik-software/pik-django-utils.git@rabbit-test#egg=pik_django_utils'],
