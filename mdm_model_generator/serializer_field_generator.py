@@ -109,6 +109,8 @@ class SerializerFieldGenerator:
             kwargs['choices'] = repr(tuple(choices))
             if choice_names:
                 kwargs['choices'] = repr(tuple(zip(choices, choice_names)))
+            else:
+                kwargs['choices'] = repr(tuple(zip(choices, choices)))
         help_text = schema.get('description')
         if help_text:
             # IF field name in API start's with underscore.

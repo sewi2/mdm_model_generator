@@ -6,7 +6,7 @@ with open('README.md', 'r', encoding='utf-8') as f:
 setup(
     name='mdm_model_generator',
     packages=find_packages(),
-    version='0.1.7',
+    version='0.1.8',
     license='MIT',
     description='This library allows us to generate django models and drf serializers using an OpenAPI schema',
     long_description=long_description,
@@ -14,7 +14,7 @@ setup(
     author='Dmitry Nikolaev',
     author_email='sewi0018@gmail.com',
     url='https://github.com/sewi2/mdm_model_generator',
-    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.7.tar.gz',
+    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.8.tar.gz',
     keywords=['mdm', 'models', 'serializers', 'generator', ],
     install_requires=[
         'jinja2',

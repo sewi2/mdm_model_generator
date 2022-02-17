@@ -8,7 +8,7 @@ class ModelFieldGenerator:
     DATETIME_MODEL_FIELD_NAME = 'models.DateTimeField'
     FOREIGN_KEY_MODEL_FIELD_NAME = 'models.ForeignKey'
     INTEGER_MODEL_FIELD_NAME = 'models.IntegerField'
-    JSON_MODEL_FIELD_NAME = 'JSONField'
+    JSON_MODEL_FIELD_NAME = 'models.JSONField'
     CHAR_MODEL_FIELD_NAME = 'models.CharField'
     BOOLEAN_MODEL_FIELD_NAME = 'models.BooleanField'
     DECIMAL_MODEL_FIELD_NAME = 'models.DecimalField'
@@ -107,6 +107,8 @@ class ModelFieldGenerator:
             kwargs['choices'] = repr(tuple(choices))
             if choice_names:
                 kwargs['choices'] = repr(tuple(zip(choices, choice_names)))
+            else:
+                kwargs['choices'] = repr(tuple(zip(choices, choices)))
         help_text = schema.get('description')
         if help_text:
             # IF field name in API start's with underscore.
