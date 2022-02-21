@@ -18,7 +18,6 @@ class SerializerGenerator:
             # tuple((path, content, force,))
             (join(self._destination, '__init__.py'), '', False,),
             (join(self._destination, 'base_serializers.py'), self._generator.generate('base_serializers'), True,),
-            (join(self._destination, 'serializers.py'), self._generator.generate('serializers'), True,),
         ]
         for write_data in data:
             write_if_not_exists(*write_data)

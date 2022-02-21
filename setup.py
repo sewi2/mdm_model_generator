@@ -1,12 +1,13 @@
 from setuptools import setup, find_packages
 
+
 with open('README.md', 'r', encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
     name='mdm_model_generator',
     packages=find_packages(),
-    version='0.1.8',
+    version='0.1.9',
     license='MIT',
     description='This library allows us to generate django models and drf serializers using an OpenAPI schema',
     long_description=long_description,
@@ -14,7 +15,7 @@ setup(
     author='Dmitry Nikolaev',
     author_email='sewi0018@gmail.com',
     url='https://github.com/sewi2/mdm_model_generator',
-    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.8.tar.gz',
+    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.9.tar.gz',
     keywords=['mdm', 'models', 'serializers', 'generator', ],
     install_requires=[
         'jinja2',
@@ -32,7 +33,7 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
+        '5 - Production/Stable',
 
         # Indicate who your project is intended for
         'Intended Audience :: Developers',

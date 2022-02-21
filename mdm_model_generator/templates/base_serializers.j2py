@@ -4,11 +4,10 @@
 
 from pik.api.serializers import StandardizedModelSerializer
 from rest_framework import serializers
-from . import models
 
 
 {% for name, definition in definitions.items() %}
-class {{name}}BaseSerializer(StandardizedModelSerializer):
+class Base{{name}}Serializer(StandardizedModelSerializer):
     {% if definition.description %}
     _help_text = '{{ definition.description.replace("'", "\\'") }}'
     {% endif %}
@@ -17,8 +16,8 @@ class {{name}}BaseSerializer(StandardizedModelSerializer):
     {% endfor %}
 
     class Meta:
-        model = models.{{name}}
         fields = {{ definition|get_serializer_fields }}
+#         model = models.{{name}}
 {% if not loop.last %}
 
 

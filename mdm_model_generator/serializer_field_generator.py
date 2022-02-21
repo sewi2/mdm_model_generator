@@ -50,13 +50,6 @@ class SerializerFieldGenerator:
         """
         return ', '.join([f"{k}={v}" for k, v in val.items()])
 
-    def _get_field_name_from_format(self, field_format: str) -> str:
-        """ Get django serializer field name according to a schema string field format"""
-
-        return self.STRING_FORMAT_TO_FIELD_NAME.get(
-            field_format, self.CHAR_SERIALIZER_FIELD_NAME,
-        )
-
     @staticmethod
     def get_field_ref(schema: dict) -> Optional[str]:
         if '$ref' in schema:
@@ -68,6 +61,13 @@ class SerializerFieldGenerator:
                 for item in schema[keyword] if '$ref' in item)
         except StopIteration:
             return None
+
+    def _get_field_name_from_format(self, field_format: str) -> str:
+        """ Get django serializer field name according to a schema string field format"""
+
+        return self.STRING_FORMAT_TO_FIELD_NAME.get(
+            field_format, self.CHAR_SERIALIZER_FIELD_NAME,
+        )
 
     def _get_field_args(self, schema: dict, field_name: str) -> List[str]:
         """Get django ref serializer names"""
@@ -130,9 +130,16 @@ class SerializerFieldGenerator:
                 self.DEFAULT_DECIMAL_SERIALIZER_FIELD_DECIMAL_PLACES)
         if serializer_field_name == self.BOOLEAN_SERIALIZER_FIELD_NAME:
             kwargs.pop('allow_blank', None)
+        if serializer_field_name == self.INTEGER_SERIALIZER_FIELD_NAME:
+            kwargs.pop('allow_blank', None)
+        if serializer_field_name == self.DECIMAL_SERIALIZER_FIELD_NAME:
+            kwargs.pop('allow_blank', None)
         if serializer_field_name == self.CHAR_SERIALIZER_FIELD_NAME:
             kwargs['max_length'] = schema.get(
                 'maxLength', self.DEFAULT_CHAR_SERIALIZER_FIELD_MAX_LENGTH)
+        elif serializer_field_name in self.STRING_FORMAT_TO_FIELD_NAME.values():
+            kwargs.pop('allow_null', None)
+            kwargs.pop('allow_blank', None)
         elif serializer_field_name == self.FOREIGN_KEY_SERIALIZER_FIELD_NAME:
             # kwargs['on_delete'] = 'serializers.CASCADE'  # models.CASCADE
             # kwargs['related_name'] = repr(f'{serializer_name.lower()}_{name}')
@@ -142,6 +149,7 @@ class SerializerFieldGenerator:
             if items and isinstance(items, dict) and items.get('title'):
                 kwargs['help_text'] = repr(items.get('title'))
             kwargs.pop('allow_null', None)
+            kwargs.pop('allow_blank', None)
             kwargs['default'] = 'dict'
         return kwargs
 

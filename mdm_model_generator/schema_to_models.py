@@ -18,7 +18,6 @@ class ModelGenerator:
             # tuple((path, content, force,))
             (join(self._destination, '__init__.py'), '', False,),
             (join(self._destination, 'base_models.py'), self._generator.generate('base_models'), True,),
-            (join(self._destination, 'models.py'), self._generator.generate('models'), True,),
         ]
         for write_data in data:
             write_if_not_exists(*write_data)
