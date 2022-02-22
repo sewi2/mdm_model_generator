@@ -6,7 +6,7 @@ class SerializerFieldGenerator:
     UUID_SERIALIZER_FIELD_NAME = 'serializers.UUIDField'
     DATE_SERIALIZER_FIELD_NAME = 'serializers.DateField'
     DATETIME_SERIALIZER_FIELD_NAME = 'serializers.DateTimeField'
-    FOREIGN_KEY_SERIALIZER_FIELD_NAME = 'serializers.PrimaryKeyRelatedField'
+    FOREIGN_KEY_SERIALIZER_FIELD_NAME = 'LazyField'
     INTEGER_SERIALIZER_FIELD_NAME = 'serializers.IntegerField'
     JSON_SERIALIZER_FIELD_NAME = 'serializers.JSONField'
     CHAR_SERIALIZER_FIELD_NAME = 'serializers.CharField'
@@ -31,11 +31,6 @@ class SerializerFieldGenerator:
         'uuid': UUID_SERIALIZER_FIELD_NAME,
         'date': DATE_SERIALIZER_FIELD_NAME,
         'date-time': DATETIME_SERIALIZER_FIELD_NAME,
-    }
-
-    # Nullable field options.
-    DEFAULT_FIELD_KWARGS = {
-        'allow_null': True,
     }
 
     @staticmethod
@@ -72,7 +67,7 @@ class SerializerFieldGenerator:
     def _get_field_args(self, schema: dict, field_name: str) -> List[str]:
         """Get django ref serializer names"""
 
-        if field_name == self.FOREIGN_KEY_SERIALIZER_FIELD_NAME:
+        if field_name == self.FOREIGN_KEY_SERIALIZER_FIELD_NAME and self.get_field_ref(schema):
             ref = self.get_field_ref(schema)
             serializer_ref = ref.split('/')[-1]
             try:
@@ -92,36 +87,17 @@ class SerializerFieldGenerator:
     ) -> dict:
         """Get django serializer field kwargs options"""
 
-        label = schema.get('title')
-        if label:
-            # IF field name in API start's with underscore.
-            # It will have title starting with white space.
-            # Probably a bug in schema generation.
-            label = label.lstrip()
-            label = label.lstrip('_')
         kwargs = {
-            'label': repr(label),
+            'label': repr(schema.get('title', '')),
+            'help_text': repr(schema.get('description', '')),
             'allow_blank': name not in required,
+            'allow_null': schema.get('nullable', False),
         }
-        choices = schema.get('enum')
-        choice_names = schema.get('x-enumNames')
-        if choices:
-            kwargs['choices'] = repr(tuple(choices))
-            if choice_names:
-                kwargs['choices'] = repr(tuple(zip(choices, choice_names)))
-            else:
-                kwargs['choices'] = repr(tuple(zip(choices, choices)))
-        help_text = schema.get('description')
-        if help_text:
-            # IF field name in API start's with underscore.
-            # It will have title starting with white space.
-            # Probably a bug in schema generation.
-            help_text = help_text.lstrip()
-            help_text = help_text.lstrip('_')
-            kwargs['help_text'] = repr(help_text)
-        kwargs.update(self.DEFAULT_FIELD_KWARGS)
-        if name in ('_uid', 'guid', 'uid'):
-            # kwargs['primary_key'] = True
+        if schema.get('enum'):
+            kwargs['choices'] = (repr(tuple(zip(schema.get('enum'), schema.get('enum'))))
+                                 if not schema.get('x-enumNames')
+                                 else repr(tuple(zip(schema.get('enum'), schema.get('x-enumNames')))))
+        if name == 'guid':
             kwargs.pop('allow_null', None)
             kwargs['read_only'] = True
         if serializer_field_name == self.DECIMAL_SERIALIZER_FIELD_NAME:
@@ -141,9 +117,9 @@ class SerializerFieldGenerator:
             kwargs.pop('allow_null', None)
             kwargs.pop('allow_blank', None)
         elif serializer_field_name == self.FOREIGN_KEY_SERIALIZER_FIELD_NAME:
-            # kwargs['on_delete'] = 'serializers.CASCADE'  # models.CASCADE
-            # kwargs['related_name'] = repr(f'{serializer_name.lower()}_{name}')
-            kwargs['many'] = True
+            enum = schema.get('properties', {}).get('type', {}).get('enum', [])
+            if enum and isinstance(enum, list):
+                kwargs['path'] = repr(f'Base{enum[0]}Serializer')
         elif serializer_field_name == self.JSON_SERIALIZER_FIELD_NAME:
             items = schema.get('items')
             if items and isinstance(items, dict) and items.get('title'):
@@ -168,7 +144,7 @@ class SerializerFieldGenerator:
 
         property_type = schema.get('type')
         refs = self.get_field_ref(schema)
-        if refs:
+        if refs or property_type == "object":
             serializer_field_name = self.FOREIGN_KEY_SERIALIZER_FIELD_NAME
         elif schema.get('enum'):
             serializer_field_name = self.CHOICES_SERIALIZER_FIELD_NAME

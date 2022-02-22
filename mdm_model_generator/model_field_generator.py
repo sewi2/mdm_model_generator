@@ -32,11 +32,6 @@ class ModelFieldGenerator:
         'date-time': DATETIME_MODEL_FIELD_NAME,
     }
 
-    # Nullable field options.
-    DEFAULT_FIELD_KWARGS = {
-        'null': True,
-    }
-
     @staticmethod
     def _to_python_kwargs(val: dict) -> str:
         """
@@ -50,7 +45,7 @@ class ModelFieldGenerator:
         return ', '.join([f"{k}={v}" for k, v in val.items()])
 
     def _get_field_name_from_format(self, field_format: str) -> str:
-        """ Get django model field name according to a schema string field format"""
+        """Get django model field name according to a schema string field format"""
 
         return self.STRING_FORMAT_TO_FIELD_NAME.get(
             field_format, self.CHAR_MODEL_FIELD_NAME,
@@ -91,34 +86,17 @@ class ModelFieldGenerator:
     ) -> dict:
         """Get django model field kwargs options"""
 
-        verbose_name = schema.get('title')
-        if verbose_name:
-            # IF field name in API start's with underscore.
-            # It will have title starting with white space.
-            # Probably a bug in schema generation.
-            verbose_name = verbose_name.lstrip()
-            verbose_name = verbose_name.lstrip('_')
         kwargs = {
-            'verbose_name': repr(verbose_name),
-            'blank': name not in required}
-        choices = schema.get('enum')
-        choice_names = schema.get('x-enumNames')
-        if choices:
-            kwargs['choices'] = repr(tuple(choices))
-            if choice_names:
-                kwargs['choices'] = repr(tuple(zip(choices, choice_names)))
-            else:
-                kwargs['choices'] = repr(tuple(zip(choices, choices)))
-        help_text = schema.get('description')
-        if help_text:
-            # IF field name in API start's with underscore.
-            # It will have title starting with white space.
-            # Probably a bug in schema generation.
-            help_text = help_text.lstrip()
-            help_text = help_text.lstrip('_')
-            kwargs['help_text'] = repr(help_text)
-        kwargs.update(self.DEFAULT_FIELD_KWARGS)
-        if name in ('_uid', 'guid', 'uid'):
+            'verbose_name': repr(schema.get('title', '')),
+            'help_text': repr(schema.get('description', '')),
+            'blank': name not in required,
+            'null': schema.get('nullable', False),
+        }
+        if schema.get('enum'):
+            kwargs['choices'] = (repr(tuple(zip(schema.get('enum'), schema.get('enum'))))
+                                 if not schema.get('x-enumNames')
+                                 else repr(tuple(zip(schema.get('enum'), schema.get('x-enumNames')))))
+        if name == 'guid':
             kwargs['primary_key'] = True
             kwargs.pop('null', None)
             kwargs.pop('editable', None)

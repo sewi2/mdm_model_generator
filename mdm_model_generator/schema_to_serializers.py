@@ -1,7 +1,7 @@
 from os.path import join, dirname
+from pathlib import Path
 
 from .generator import Generator
-from .utils import create_directory, write_if_not_exists
 
 
 class SerializerGenerator:
@@ -13,11 +13,11 @@ class SerializerGenerator:
         self._generator = Generator(self.TEMPLATES, schema)
 
     def generate(self):  # noqa: pylint=arguments-differ
-        create_directory(self._destination)
+        Path(self._destination).mkdir(parents=True, exist_ok=True)
         data = [
-            # tuple((path, content, force,))
-            (join(self._destination, '__init__.py'), '', False,),
-            (join(self._destination, 'base_serializers.py'), self._generator.generate('base_serializers'), True,),
+            (join(self._destination, '__init__.py'), ''),
+            (join(self._destination, 'base_serializers.py'), self._generator.generate('base_serializers')),
         ]
-        for write_data in data:
-            write_if_not_exists(*write_data)
+        for path, content in data:
+            with open(path, 'w', encoding="utf-8") as file_obj:
+                file_obj.write(content)
