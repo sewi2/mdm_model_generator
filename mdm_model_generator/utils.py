@@ -1,3 +1,5 @@
+from typing import List
+
 from djangorestframework_camel_case.util import camel_to_underscore
 
 
@@ -20,7 +22,7 @@ def to_safe_string(value: str) -> str:
     return repr(str(value))
 
 
-def get_serializer_fields(definition: dict):
+def get_serializer_fields(definition: dict) -> List[str]:
     return [
         to_model_field_name(prop_name)
         for prop_name in

@@ -144,7 +144,8 @@ class SerializerFieldGenerator:
 
         property_type = schema.get('type')
         refs = self.get_field_ref(schema)
-        if refs or property_type == "object":
+        if refs or (property_type == "object" 
+                    and schema.get('properties', {}).get('type', {}).get('enum', [])):
             serializer_field_name = self.FOREIGN_KEY_SERIALIZER_FIELD_NAME
         elif schema.get('enum'):
             serializer_field_name = self.CHOICES_SERIALIZER_FIELD_NAME
