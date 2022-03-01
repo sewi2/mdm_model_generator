@@ -24,7 +24,7 @@ class Generator:
             lstrip_blocks=True,
         )
         self.parser = ResolvingParser(
-            schema, backend='openapi-spec-validator', strict=False,
+            spec_string=schema, backend='openapi-spec-validator', strict=False,
             resolve_types=RESOLVE_HTTP | RESOLVE_FILES,
         )
         self.env.filters.update({

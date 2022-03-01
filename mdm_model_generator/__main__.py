@@ -1,6 +1,8 @@
 #!/usr/bin/env python
-
+import json
 from argparse import ArgumentParser
+from os.path import join
+from pathlib import Path
 
 from .schema_to_models import ModelGenerator
 from .schema_to_serializers import SerializerGenerator
@@ -13,5 +15,18 @@ parser.add_argument('destination', default="../mdm_models/",
 
 args = parser.parse_args()
 
-ModelGenerator(args.schema, args.destination).generate()
-SerializerGenerator(args.schema, args.destination).generate()
+with open(args.schema) as fp:
+    schema = json.load(fp)
+
+Path(args.destination).mkdir(parents=True, exist_ok=True)
+
+data = [
+    # (path, content)
+    (join(args.destination, '__init__.py'), ''),
+    (join(args.destination, 'base_models.py'), ModelGenerator(schema).generate()),
+    (join(args.destination, 'base_serializers.py'), SerializerGenerator(schema).generate()),
+]
+
+for path, content in data:
+    with open(path, 'w', encoding='utf-8') as file_obj:
+        file_obj.write(content)

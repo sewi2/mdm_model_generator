@@ -1,13 +1,30 @@
+import os
+import re
+
 from setuptools import setup, find_packages
 
+dependency_links = []
+dependency_links_pattern = re.compile(r".*(?P<url>https?://[^\s]+)")
 
-with open('README.md', 'r', encoding='utf-8') as f:
+with open('README.md') as f:
     long_description = f.read()
+
+with open('requirements.txt') as f:
+    requirements = [
+        line.rstrip(f'{os.linesep}') for line in f.readlines()
+        if line and not line.startswith(('#', '-e', 'git+'))
+    ]
+
+with open('requirements.txt') as f:
+    for line in f.readlines():
+        matched = dependency_links_pattern.match(line)
+        if matched:
+            dependency_links.append(matched.group("url"))
 
 setup(
     name='mdm_model_generator',
     packages=find_packages(),
-    version='0.1.12',
+    version='0.1.13',
     license='MIT',
     description='This library allows us to generate django models and drf serializers using an OpenAPI schema',
     long_description=long_description,
@@ -15,17 +32,10 @@ setup(
     author='Dmitry Nikolaev',
     author_email='sewi0018@gmail.com',
     url='https://github.com/sewi2/mdm_model_generator',
-    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.12.tar.gz',
+    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.13.tar.gz',
     keywords=['mdm', 'models', 'serializers', 'generator', ],
-    install_requires=[
-        'jinja2',
-        'django',
-        'prance',
-        'openapi_spec_validator',
-        'djangorestframework',
-        'djangorestframework-camel-case',
-    ],
-    dependency_links=['https://github.com/pik-software/pik-django-utils.git@rabbit-test#egg=pik_django_utils'],
+    install_requires=requirements,
+    dependency_links=dependency_links,
     include_package_data=True,
     python_requires='~=3.6',
     classifiers=[  # Optional
