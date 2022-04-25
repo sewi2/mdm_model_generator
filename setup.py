@@ -29,7 +29,7 @@ setup(
     packages=find_packages(),
     version=version,
     url='https://github.com/sewi2/openapi-model-generator',
-    download_url='https://github.com/sewi2/openapi-model-generator/archive/refs/tags/0.1.14.tar.gz',
+    download_url='https://github.com/sewi2/openapi-model-generator/archive/refs/tags/0.1.15.tar.gz',
     license='MIT',
     description='This library allows us to generate django models and drf serializers using an OpenAPI schema',
     long_description=long_description,
