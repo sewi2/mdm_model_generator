@@ -4,14 +4,18 @@
 
 from django.db import models
 
+from pik.core.models import BasePHistorical
+
 
 {% for name, definition in definitions.items() %}
-class Base{{name}}(models.Model):
+class Base{{name}}(BasePHistorical):
     {% if definition.description %}
     _help_text = '{{ definition.description.replace("'", "\\'") }}'
     {% endif %}
     {% for prop_name, property in definition.get("properties", {}).items() %}
-    {{ prop_name|to_model_field_name }} = {{ property|to_model_field(prop_name, name, definition.required) }}
+    {% if prop_name|to_field_name != 'type' %}
+    {{ prop_name|to_field_name }} = {{ property|to_model_field(prop_name, name, definition.required) }}
+    {% endif %}
     {% endfor %}
 
     class Meta:

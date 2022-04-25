@@ -1,7 +1,10 @@
+# Version 2
+
 jinja2
-django
 prance
 openapi_spec_validator
-djangorestframework
 djangorestframework-camel-case
--e git+https://github.com/pik-software/pik-django-utils.git@rabbit-test#egg=pik_django_utils
+# djangorestframework-camel-case needs Django and djangorestframework
+Django
+djangorestframework
+-e git+https://github.com/pik-software/pik-django-utils.git@add-drf#egg=pik_django_utils

@@ -21,19 +21,20 @@ with open('requirements.txt') as f:
         if matched:
             dependency_links.append(matched.group("url"))
 
+with open('VERSION') as version_file:
+    version = version_file.read().strip()
+
 setup(
-    name='mdm_model_generator',
+    name='openapi_model_generator',
     packages=find_packages(),
-    version='0.1.13',
+    version=version,
     license='MIT',
     description='This library allows us to generate django models and drf serializers using an OpenAPI schema',
     long_description=long_description,
     long_description_content_type='text/markdown',
     author='Dmitry Nikolaev',
     author_email='sewi0018@gmail.com',
-    url='https://github.com/sewi2/mdm_model_generator',
-    download_url='https://github.com/sewi2/mdm_model_generator/archive/refs/tags/0.1.13.tar.gz',
-    keywords=['mdm', 'models', 'serializers', 'generator', ],
+    keywords=['openapi', 'models', 'serializers', 'generator', ],
     install_requires=requirements,
     dependency_links=dependency_links,
     include_package_data=True,

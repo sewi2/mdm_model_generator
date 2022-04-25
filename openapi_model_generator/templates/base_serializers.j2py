@@ -14,7 +14,9 @@ class Base{{name}}Serializer(StandardizedModelSerializer):
     _help_text = '{{ definition.description.replace("'", "\\'") }}'
     {% endif %}
     {% for prop_name, property in definition.get("properties", {}).items() %}
-    {{ prop_name|to_serializer_field_name }} = {{ property|to_serializer_field(prop_name, name, definition.required) }}
+    {% if prop_name|to_field_name != 'type' %}
+    {{ prop_name|to_field_name }} = {{ property|to_serializer_field(prop_name, name, definition.required) }}
+    {% endif %}
     {% endfor %}
 
     class Meta:

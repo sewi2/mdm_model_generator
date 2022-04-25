@@ -1,25 +1,25 @@
-# mdm_model_generator
+# openapi_model_generator
 
 This library allows us to generate django models and drf serializers using an OpenAPI schema.
 
 # HowTo Use #
 ```shell
-pip install mdm_model_generator
+pip install openapi_model_generator
 
-python -m mdm_model_generator {open_api_path.json} {destination}
-python -m mdm_model_generator {open_api_path.yaml} {destination}
+python -m openapi_model_generator {open_api_path.json} {destination}
+python -m openapi_model_generator {open_api_path.yaml} {destination}
 ```
     
     
 As an example:
 ```shell
-python -m mdm_model_generator schema.esb.json base_dir
+python -m openapi_model_generator schema.esb.json base_dir
 ```
 
 or 
 
 ```shell
-python -m mdm_model_generator /home/user/schema.esb.json /home/user/base_dir
+python -m openapi_model_generator /home/user/schema.esb.json /home/user/base_dir
 ```
 
 This command creates base models and serializers based on its models into the directory provided.
@@ -29,7 +29,7 @@ Then you can use them to define models and serializers in your Django+DRF applic
 models.py:
 
 ```python
-from mdm_models import define_models
+from utils import define_models
 
 from base_dir import base_models
 
@@ -40,7 +40,7 @@ define_models(['Model1', 'Model2', ...], base_models, locals())
 serializers.py:
 
 ```python
-from mdm_models import define_serializers
+from utils import define_serializers
 
 from base_dir import base_serializers
 from . import models
