@@ -1,0 +1,384 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Контракты обмена ПАО ПИК",
+    "version": "v23.0.0",
+    "description": "Описание структур данных используемых для обмена в ПАО ПИК"
+  },
+  "paths": {},
+  "components": {
+    "schemas": {
+      "BenchmarkCatalogObjectHeader": {
+        "title": "Тестовый справочник",
+        "x-title-plural": "Тестовый справочник",
+        "description": "Тестовый справочник",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Guid",
+            "description": "Globally Unique Identifier — статистически уникальный 128-битный идентификатор. Записывается в виде строки из 32 шестнадцатеричных цифр, разбитых на группы дефисами. Формируется на стороне Мастер-системы",
+            "nullable": false
+          },
+          "type": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "Type",
+            "description": "Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)",
+            "enum": [
+              "BenchmarkCatalogObjectHeader"
+            ],
+            "nullable": false
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Дата создания",
+            "description": "Дата создания объекта в Мастер-системе по UTC в формате ISO",
+            "nullable": false
+          },
+          "updated": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Дата обновления",
+            "description": "Дата обновления объекта в Мастер-системе по UTC в формате ISO",
+            "nullable": false
+          },
+          "deleted": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Дата деактивации",
+            "description": "Дата деактивации / пометки на удаление объекта в Мастер-системе по UTC в формате ISO",
+            "nullable": true
+          },
+          "validObjectGuid": {
+            "type": "string",
+            "format": "uuid",
+            "title": "guid объекта - эталона",
+            "description": "guid объекта - эталона. Заполнен для объектов-дублей",
+            "nullable": true
+          },
+          "validObjectType": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "type объекта - эталона",
+            "description": "type объекта - эталона. Заполнен для объектов-дублей",
+            "nullable": true
+          },
+          "stringField": {
+            "type": "string",
+            "maxLength": 150,
+            "title": "Строка",
+            "description": "Пример значения 'string'",
+            "nullable": false
+          },
+          "stringUuid": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Уникальный идентификатор",
+            "description": "Пример значения 'string', формат 'uuid'",
+            "nullable": true
+          },
+          "stringDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Дата и время",
+            "description": "Пример значения 'string', формат 'date-time'",
+            "nullable": true
+          },
+          "stringDate": {
+            "type": "string",
+            "format": "date",
+            "title": "Дата",
+            "description": "Пример значения 'string', формат 'date'",
+            "nullable": true
+          },
+          "numberField": {
+            "type": "number",
+            "minimum": -1000000000000,
+            "maximum": 1000000000000,
+            "multipleOf": 0.0001,
+            "title": "Число",
+            "description": "Пример значения 'number'",
+            "nullable": true
+          },
+          "decimalField": {
+            "type": "number",
+            "format": "decimal",
+            "minimum": -1000000000000,
+            "maximum": 1000000000000,
+            "multipleOf": 0.0001,
+            "title": "Десятичное число",
+            "description": "Пример значения 'number', формат 'decimal'",
+            "nullable": true
+          },
+          "integerField": {
+            "type": "integer",
+            "minimum": -1000000000000,
+            "maximum": 1000000000000,
+            "multipleOf": 1,
+            "title": "Целое число",
+            "description": "Пример значения 'integer'",
+            "nullable": true
+          },
+          "isBoolean": {
+            "type": "boolean",
+            "title": "Булево",
+            "description": "Пример значения 'boolean'",
+            "nullable": true
+          },
+          "enumString": {
+            "type": "string",
+            "maxLength": 50,
+            "title": "Перечисление(Строка)",
+            "description": "Пример значения 'enum+string'",
+            "enum": [
+              "enumValue1",
+              "enumValue2",
+              "enumValue3"
+            ],
+            "x-enumNames": [
+              "Значение1",
+              "Значение2",
+              "Значение3"
+            ],
+            "nullable": true
+          },
+          "enumInteger": {
+            "type": "integer",
+            "title": "Перечисление(Целое число)",
+            "description": "Пример значения 'enum+integer'",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "x-enumNames": [
+              "Значение1",
+              "Значение2",
+              "Значение3"
+            ],
+            "nullable": true
+          },
+          "hash": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Хеш сумма",
+            "description": "Хеш сумма 'Строка'(SHA512)",
+            "nullable": true
+          },
+          "encrypted": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Зашифрованное значение",
+            "description": "Зашифрованное значение 'Строка'(RSA)",
+            "nullable": true
+          },
+          "comment": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Комментарий",
+            "description": "Комментарий",
+            "nullable": true
+          }
+        },
+        "example": {
+          "guid": "e6a8f92b-3e15-442e-803e-8888602631ce",
+          "type": "BenchmarkCatalogObjectHeader",
+          "created": "2021-05-12T10:50:25.61Z",
+          "updated": "2021-05-12T10:50:25.61Z",
+          "deleted": "2021-05-12T10:50:25.61Z",
+          "validObjectGuid": "e6a8f92b-3e15-442e-803e-8888602631cd",
+          "validObjectType": "BenchmarkCatalogObjectHeader",
+          "stringField": "Подольская Юлия Вячеславовна",
+          "stringUuid": "a348b3f1-a001-11e8-80f8-18a99bdc8e51",
+          "stringDateTime": "2022-08-03T08:08:13.103053Z",
+          "stringDate": "2022-08-03",
+          "numberField": 123.45,
+          "decimalField": 123.45,
+          "integerField": 123,
+          "isBoolean": true,
+          "enumString": "enumValue3",
+          "enumInteger": 2,
+          "hash": "34B8E21CF1625980F7DF1EC8B6773CE6570B1C07DA28F933DB5FF757B74DCAD1AA21468E84E0098F9D4964D60963E1140FC80CEA3AC6BB08B16729FBE6F6894F",
+          "encrypted": "0DC1FF22CD26EC5E69402491830C0ECEA8B99234D4D74065F3E581687A92A7B450642ED34EEA8E80CD6484DF87FAE12C45D56762F7E8C783636A2CE8B7632B040036537700B2B4C6BC78E502824136939785304F8777EAC81C4F8E8388A709DFF95228477083A48DFA98647B277266CC6CE7C870801DA8F963E8CBA331CDEF10",
+          "comment": "Это пустой комментарий"
+        },
+        "additionalProperties": false,
+        "required": [
+          "guid",
+          "type",
+          "created",
+          "updated",
+          "deleted",
+          "validObjectGuid",
+          "validObjectType",
+          "stringField",
+          "stringUuid",
+          "stringDateTime",
+          "stringDate",
+          "numberField",
+          "decimalField",
+          "integerField",
+          "isBoolean",
+          "enumString",
+          "enumInteger",
+          "hash",
+          "encrypted",
+          "comment"
+        ]
+      },
+      "BenchmarkCatalogObjectTable": {
+        "title": "Запись таблицы",
+        "x-title-plural": "Запись табличной части",
+        "description": "Запись табличной части, тестового справочника",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Guid",
+            "description": "Globally Unique Identifier — статистически уникальный 128-битный идентификатор. Записывается в виде строки из 32 шестнадцатеричных цифр, разбитых на группы дефисами. Формируется на стороне Мастер-системы",
+            "nullable": false
+          },
+          "type": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "Type",
+            "description": "Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)",
+            "enum": [
+              "BenchmarkCatalogObjectTable"
+            ],
+            "nullable": false
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Дата создания",
+            "description": "Дата создания объекта в Мастер-системе по UTC в формате ISO",
+            "nullable": false
+          },
+          "updated": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Дата обновления",
+            "description": "Дата обновления объекта в Мастер-системе по UTC в формате ISO",
+            "nullable": false
+          },
+          "deleted": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Дата деактивации",
+            "description": "Дата деактивации / пометки на удаление объекта в Мастер-системе по UTC в формате ISO",
+            "nullable": true
+          },
+          "validObjectGuid": {
+            "type": "string",
+            "format": "uuid",
+            "title": "guid объекта - эталона",
+            "description": "guid объекта - эталона. Заполнен для объектов-дублей",
+            "nullable": true
+          },
+          "validObjectType": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "type объекта - эталона",
+            "description": "type объекта - эталона. Заполнен для объектов-дублей",
+            "nullable": true
+          },
+          "header": {
+            "type": "object",
+            "title": "Головной объект (шапка)",
+            "description": "Головной объект (шапка)",
+            "nullable": false,
+            "required": [
+              "guid",
+              "type"
+            ],
+            "properties": {
+              "guid": {
+                "type": "string",
+                "format": "uuid",
+                "title": "Guid",
+                "readOnly": true,
+                "nullable": false
+              },
+              "type": {
+                "type": "string",
+                "title": "Type",
+                "readOnly": true,
+                "nullable": false,
+                "enum": [
+                  "BenchmarkCatalogObjectHeader"
+                ]
+              }
+            }
+          },
+          "lineNumber": {
+            "type": "integer",
+            "minimum": -1000000000000,
+            "maximum": 1000000000000,
+            "multipleOf": 1,
+            "title": "Номер строки",
+            "description": "Номер строки",
+            "nullable": true
+          },
+          "stringField": {
+            "type": "string",
+            "maxLength": 150,
+            "title": "Строка",
+            "description": "Пример значения 'string'",
+            "nullable": false
+          },
+          "stringDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Дата и время",
+            "description": "Пример значения 'string', формат 'date-time'",
+            "nullable": true
+          }
+        },
+        "example": {
+          "guid": "e6a8f92b-3e15-442e-803e-8888602631ce",
+          "type": "BenchmarkCatalogObjectTable",
+          "created": "2021-05-12T10:50:25.61Z",
+          "updated": "2021-05-12T10:50:25.61Z",
+          "deleted": "2021-05-12T10:50:25.61Z",
+          "validObjectGuid": "e6a8f92b-3e15-442e-803e-8888602631cd",
+          "validObjectType": "BenchmarkCatalogObjectTable",
+          "header": {
+            "guid": "e6a8f92b-3e15-442e-803e-8888602615cd",
+            "type": "BenchmarkCatalogObjectHeader"
+          },
+          "lineNumber": 1,
+          "stringField": "Подольская Юлия Вячеславовна",
+          "stringDateTime": "2022-08-03T08:08:13.103053Z"
+        },
+        "additionalProperties": false,
+        "required": [
+          "guid",
+          "type",
+          "created",
+          "updated",
+          "deleted",
+          "validObjectGuid",
+          "validObjectType",
+          "header",
+          "lineNumber",
+          "stringField",
+          "stringDateTime"
+        ]
+      }
+    }
+  },
+  "tags": [],
+  "x-tagGroups": [
+    {
+      "name": "Benchmark",
+      "tags": [
+        "BenchmarkCatalogObjectHeader",
+        "BenchmarkCatalogObjectTable"
+      ],
+      "message_type": "EntityContracts"
+    }
+  ]
+}

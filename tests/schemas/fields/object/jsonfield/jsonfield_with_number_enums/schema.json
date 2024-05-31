@@ -1,0 +1,14 @@
+{
+  "type": "array",
+  "items": {
+    "type": "number",
+    "minimum": 0,
+    "maximum": 1000000000000,
+    "multipleOf": 1e-07
+  },
+  "minItems": 2,
+  "maxItems": 2,
+  "title": "Координаты",
+  "description": "Координаты в формате долгота/широта полученные из сервиса DaData",
+  "nullable": true
+}

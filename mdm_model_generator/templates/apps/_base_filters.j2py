@@ -1,0 +1,33 @@
+from rest_framework_filters import AutoFilter
+from pik.api.filters import StandardizedFilterSet
+
+from .. import models as base_module
+
+
+{% for model in models %}
+class Base{{ model.__name__ }}Filter(
+        StandardizedFilterSet):
+{% for field in model._meta.get_fields() %}
+    {% if not field.__class__.__name__ in ("ForeignKey", 'ManyToOneRel', 'JSONField') %}
+        {% if field.__class__.__name__ in ("ArrayField", ) %}
+    {{ field.name }} = AutoFilter(lookups=['exact', 'contains', 'contained_by', 'overlap', 'len', 'isnull'])
+        {% elif field.__class__.__name__ in ("BooleanField", ) %}
+    {{ field.name }} = AutoFilter(lookups=['exact', 'in', 'isnull'])
+        {% elif field.__class__.__name__ in ("CharField", ) %}
+    {{ field.name }} = AutoFilter(lookups=['exact', 'iexact', 'in', 'startswith', 'endswith', 'contains', 'isnull'])
+        {% elif field.__class__.__name__ in ("DateTimeField", "DateField", "IntegerField", "UUIDField", "FloatField", "DecimalField", ) %}
+    {{ field.name }} = AutoFilter(lookups=['exact', 'gt', 'gte', 'lt', 'lte', 'in', 'isnull'])
+        {% else %}
+    {{ field.name }} = AutoFilter(lookups='__all__')
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+    class Meta:
+        model = base_module.{{model.__name__}}
+        fields = ()
+{% if not loop.last %}
+
+
+{% endif %}
+{% endfor %}

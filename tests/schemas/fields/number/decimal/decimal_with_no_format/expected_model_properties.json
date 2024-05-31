@@ -1,0 +1,99 @@
+{
+  "_app": "test",
+  "_fk_related_model": null,
+  "_is_camelcase_enabled": "getattr(settings, 'MDM_MODELS_CAMEL_CASE', False)",
+  "_is_db_index_field": false,
+  "_model_name": "TestModel",
+  "_name": "test_field",
+  "_name_kwargs": {},
+  "_required_fields": [],
+  "_schema": {
+    "description": "Пример значения 'number'",
+    "maximum": 1000000000000,
+    "minimum": -1000000000000,
+    "multipleOf": 0.0001,
+    "nullable": true,
+    "title": "Число",
+    "type": "number"
+  },
+  "_tag_groups": [],
+  "choices_kwargs": {},
+  "clean_kwargs": {
+    "blank": true,
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "decimal_places": 4,
+    "default": null,
+    "editable": false,
+    "help_text": "_(\"Пример значения 'number'\")",
+    "max_digits": 17,
+    "null": true,
+    "validators": "[MinValueValidator(Decimal('-1000000000000')), MaxValueValidator(Decimal('1000000000000'))]",
+    "verbose_name": "_('Число')"
+  },
+  "default_kwargs": {
+    "blank": true,
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "default": null,
+    "editable": false,
+    "help_text": "_(\"Пример значения 'number'\")",
+    "null": true,
+    "verbose_name": "_('Число')"
+  },
+  "definition": "models.DecimalField(verbose_name=_('Число'), help_text=_(\"Пример значения 'number'\"), blank=True, null=True, default=None, editable=False, db_column='test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None, validators=[MinValueValidator(Decimal('-1000000000000')), MaxValueValidator(Decimal('1000000000000'))], max_digits=17, decimal_places=4)",
+  "description": "_(\"Пример значения 'number'\")",
+  "field_format": null,
+  "field_type_from_format": "models.CharField",
+  "field_type_mapping": {
+    "boolean": "models.BooleanField",
+    "integer": "(models.BigIntegerField if getattr(settings, 'MDM_MODELS_BIGINT_ON', False) else models.IntegerField)",
+    "number": "models.DecimalField",
+    "string": "models.CharField"
+  },
+  "fk_model_name": null,
+  "guid_kwargs": {},
+  "has_object_enums": false,
+  "is_blank_kwarg": true,
+  "is_force_blank_enabled": true,
+  "is_force_null_enabled": true,
+  "is_null_kwarg": true,
+  "is_nullable": true,
+  "is_object": false,
+  "is_required": false,
+  "kwargs": {
+    "blank": true,
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "decimal_places": 4,
+    "default": null,
+    "editable": false,
+    "help_text": "_(\"Пример значения 'number'\")",
+    "max_digits": 17,
+    "null": true,
+    "validators": "[MinValueValidator(Decimal('-1000000000000')), MaxValueValidator(Decimal('1000000000000'))]",
+    "verbose_name": "_('Число')"
+  },
+  "no_clean_kwargs": {
+    "blank": true,
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "decimal_places": 4,
+    "default": null,
+    "editable": false,
+    "help_text": "_(\"Пример значения 'number'\")",
+    "max_digits": 17,
+    "null": true,
+    "validators": "[MinValueValidator(Decimal('-1000000000000')), MaxValueValidator(Decimal('1000000000000'))]",
+    "verbose_name": "_('Число')"
+  },
+  "optional_kwargs": {
+    "blank": true,
+    "null": true
+  },
+  "schema_enum": null,
+  "schema_type": "number",
+  "title": "_('Число')",
+  "type": "models.DecimalField",
+  "type_kwargs": {
+    "decimal_places": 4,
+    "max_digits": 17,
+    "validators": "[MinValueValidator(Decimal('-1000000000000')), MaxValueValidator(Decimal('1000000000000'))]"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "type": "string",
+  "format": "date-time",
+  "title": "Дата создания",
+  "description": "Дата создания объекта в Мастер-системе по UTC в формате ISO",
+  "nullable": false
+}

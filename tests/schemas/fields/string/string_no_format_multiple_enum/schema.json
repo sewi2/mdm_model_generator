@@ -1,0 +1,17 @@
+{
+  "type": "string",
+  "maxLength": 50,
+  "title": "Перечисление(Строка)",
+  "description": "Пример значения 'enum+string'",
+  "enum": [
+    "enumValue1",
+    "enumValue2",
+    "enumValue3"
+  ],
+  "x-enumNames": [
+    "Значение1",
+    "Значение2",
+    "Значение3"
+  ],
+  "nullable": true
+}

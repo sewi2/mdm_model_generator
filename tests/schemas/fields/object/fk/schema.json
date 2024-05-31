@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "format": "uuid",
+  "title": "Пользователь",
+  "description": "Пользователь",
+  "nullable": true,
+  "required": [
+    "guid",
+    "type"
+  ],
+  "properties": {
+    "guid": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Guid",
+      "readOnly": true,
+      "nullable": false
+    },
+    "type": {
+      "type": "string",
+      "title": "Type",
+      "readOnly": true,
+      "nullable": false,
+      "enum": [
+        "SecOpsCorpUser"
+      ]
+    }
+  }
+}

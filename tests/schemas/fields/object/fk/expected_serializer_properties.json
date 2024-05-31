@@ -1,0 +1,137 @@
+{
+  "_field_type_kwargs_mapping": {
+    "LazyField": {
+      "allow_blank": null,
+      "path": "'BaseSecOpsCorpUserSerializer'"
+    },
+    "serializers.BooleanField": {
+      "allow_blank": null
+    },
+    "serializers.CharField": {
+      "max_length": 255
+    },
+    "serializers.ChoiceField": {},
+    "serializers.DateField": {
+      "allow_blank": null
+    },
+    "serializers.DateTimeField": {
+      "allow_blank": null
+    },
+    "serializers.DecimalField": {
+      "allow_blank": null,
+      "decimal_places": 2,
+      "max_digits": 12,
+      "max_value": null,
+      "min_value": null
+    },
+    "serializers.EmailField": {
+      "allow_blank": null
+    },
+    "serializers.IntegerField": {
+      "allow_blank": null,
+      "max_value": null,
+      "min_value": null
+    },
+    "serializers.JSONField": {
+      "allow_blank": null,
+      "default": "dict",
+      "help_text": "_('Пользователь')"
+    },
+    "serializers.UUIDField": {
+      "allow_blank": null
+    }
+  },
+  "_jsonfield_help_text_kwargs": {
+    "help_text": "_('Пользователь')"
+  },
+  "_name": "test_field",
+  "_required_fields": [],
+  "_schema": {
+    "description": "Пользователь",
+    "format": "uuid",
+    "nullable": true,
+    "properties": {
+      "guid": {
+        "format": "uuid",
+        "nullable": false,
+        "readOnly": true,
+        "title": "Guid",
+        "type": "string"
+      },
+      "type": {
+        "enum": [
+          "SecOpsCorpUser"
+        ],
+        "nullable": false,
+        "readOnly": true,
+        "title": "Type",
+        "type": "string"
+      }
+    },
+    "required": [
+      "guid",
+      "type"
+    ],
+    "title": "Пользователь",
+    "type": "object"
+  },
+  "_serializer_name": "TestModelSerializer",
+  "choices_kwargs": {},
+  "clean_kwargs": {
+    "allow_null": true,
+    "help_text": "_('Пользователь')",
+    "label": "_('Пользователь')",
+    "path": "'BaseSecOpsCorpUserSerializer'"
+  },
+  "default_kwargs": {
+    "allow_blank": true,
+    "allow_null": true,
+    "help_text": "_('Пользователь')",
+    "label": "_('Пользователь')"
+  },
+  "definition": "LazyField(label=_('Пользователь'), help_text=_('Пользователь'), allow_null=True, path='BaseSecOpsCorpUserSerializer')",
+  "description": "_('Пользователь')",
+  "field_format": "uuid",
+  "field_type_from_format": "serializers.UUIDField",
+  "field_type_mapping": {
+    "boolean": "serializers.BooleanField",
+    "integer": "serializers.IntegerField",
+    "number": "serializers.DecimalField",
+    "string": "serializers.UUIDField"
+  },
+  "fk_model_name": "SecOpsCorpUser",
+  "guid_kwargs": {},
+  "has_object_enums": "SecOpsCorpUser",
+  "is_blank_kwarg": true,
+  "is_force_blank_enabled": true,
+  "is_force_null_enabled": true,
+  "is_null_kwarg": true,
+  "is_nullable": true,
+  "is_object": true,
+  "is_required": false,
+  "kwargs": {
+    "allow_null": true,
+    "help_text": "_('Пользователь')",
+    "label": "_('Пользователь')",
+    "path": "'BaseSecOpsCorpUserSerializer'"
+  },
+  "no_clean_kwargs": {
+    "allow_blank": null,
+    "allow_null": true,
+    "help_text": "_('Пользователь')",
+    "label": "_('Пользователь')",
+    "path": "'BaseSecOpsCorpUserSerializer'"
+  },
+  "optional_kwargs": {
+    "allow_blank": true,
+    "allow_null": true
+  },
+  "schema_enum": null,
+  "schema_type": "object",
+  "title": "_('Пользователь')",
+  "type": "LazyField",
+  "type_kwargs": {
+    "allow_blank": null,
+    "path": "'BaseSecOpsCorpUserSerializer'"
+  }
+}

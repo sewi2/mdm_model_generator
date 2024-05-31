@@ -1,0 +1,99 @@
+{
+  "_app": "test",
+  "_fk_related_model": null,
+  "_is_camelcase_enabled": "getattr(settings, 'MDM_MODELS_CAMEL_CASE', False)",
+  "_is_db_index_field": false,
+  "_model_name": "TestModel",
+  "_name": "test_field",
+  "_name_kwargs": {},
+  "_required_fields": [],
+  "_schema": {
+    "description": "Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)",
+    "enum": [
+      "BenchmarkCatalogObjectHeader"
+    ],
+    "maxLength": 255,
+    "nullable": false,
+    "title": "Type",
+    "type": "string"
+  },
+  "_tag_groups": [],
+  "choices_kwargs": {
+    "choices": "TEST_FIELD_CHOICES"
+  },
+  "clean_kwargs": {
+    "blank": true,
+    "choices": "TEST_FIELD_CHOICES",
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "default": null,
+    "editable": false,
+    "help_text": "_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)')",
+    "max_length": 255,
+    "null": true,
+    "verbose_name": "_('Type')"
+  },
+  "default_kwargs": {
+    "blank": true,
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "default": null,
+    "editable": false,
+    "help_text": "_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)')",
+    "null": true,
+    "verbose_name": "_('Type')"
+  },
+  "definition": "models.CharField(verbose_name=_('Type'), help_text=_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)'), blank=True, null=True, default=None, editable=False, db_column='test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None, choices=TEST_FIELD_CHOICES, max_length=255)",
+  "description": "_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)')",
+  "field_format": null,
+  "field_type_from_format": "models.CharField",
+  "field_type_mapping": {
+    "boolean": "models.BooleanField",
+    "integer": "(models.BigIntegerField if getattr(settings, 'MDM_MODELS_BIGINT_ON', False) else models.IntegerField)",
+    "number": "models.DecimalField",
+    "string": "models.CharField"
+  },
+  "fk_model_name": null,
+  "guid_kwargs": {},
+  "has_object_enums": false,
+  "is_blank_kwarg": true,
+  "is_force_blank_enabled": true,
+  "is_force_null_enabled": true,
+  "is_null_kwarg": true,
+  "is_nullable": false,
+  "is_object": false,
+  "is_required": false,
+  "kwargs": {
+    "blank": true,
+    "choices": "TEST_FIELD_CHOICES",
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "default": null,
+    "editable": false,
+    "help_text": "_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)')",
+    "max_length": 255,
+    "null": true,
+    "verbose_name": "_('Type')"
+  },
+  "no_clean_kwargs": {
+    "blank": true,
+    "choices": "TEST_FIELD_CHOICES",
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "default": null,
+    "editable": false,
+    "help_text": "_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)')",
+    "max_length": 255,
+    "null": true,
+    "verbose_name": "_('Type')"
+  },
+  "optional_kwargs": {
+    "blank": true,
+    "null": true
+  },
+  "schema_enum": [
+    "BenchmarkCatalogObjectHeader"
+  ],
+  "schema_type": "string",
+  "title": "_('Type')",
+  "type": "models.CharField",
+  "type_kwargs": {
+    "max_length": 255
+  }
+}

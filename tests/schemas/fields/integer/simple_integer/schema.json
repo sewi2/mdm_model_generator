@@ -1,0 +1,9 @@
+{
+  "type": "integer",
+  "minimum": -1000000000000,
+  "maximum": 1000000000000,
+  "multipleOf": 1,
+  "title": "Целое число",
+  "description": "Пример значения 'integer'",
+  "nullable": true
+}

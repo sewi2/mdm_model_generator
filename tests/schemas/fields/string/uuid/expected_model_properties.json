@@ -1,0 +1,84 @@
+{
+  "_app": "test",
+  "_fk_related_model": null,
+  "_is_camelcase_enabled": "getattr(settings, 'MDM_MODELS_CAMEL_CASE', False)",
+  "_is_db_index_field": false,
+  "_model_name": "TestModel",
+  "_name": "test_field",
+  "_name_kwargs": {},
+  "_required_fields": [],
+  "_schema": {
+    "description": "Globally Unique Identifier — статистически уникальный 128-битный идентификатор. Записывается в виде строки из 32 шестнадцатеричных цифр, разбитых на группы дефисами. Формируется на стороне Мастер-системы",
+    "format": "uuid",
+    "nullable": false,
+    "title": "Guid",
+    "type": "string"
+  },
+  "_tag_groups": [],
+  "choices_kwargs": {},
+  "clean_kwargs": {
+    "blank": true,
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "default": null,
+    "editable": false,
+    "help_text": "_('Globally Unique Identifier — статистически уникальный 128-битный идентификатор. Записывается в виде строки из 32 шестнадцатеричных цифр, разбитых на группы дефисами. Формируется на стороне Мастер-системы')",
+    "null": true,
+    "verbose_name": "_('Guid')"
+  },
+  "default_kwargs": {
+    "blank": true,
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "default": null,
+    "editable": false,
+    "help_text": "_('Globally Unique Identifier — статистически уникальный 128-битный идентификатор. Записывается в виде строки из 32 шестнадцатеричных цифр, разбитых на группы дефисами. Формируется на стороне Мастер-системы')",
+    "null": true,
+    "verbose_name": "_('Guid')"
+  },
+  "definition": "models.UUIDField(verbose_name=_('Guid'), help_text=_('Globally Unique Identifier — статистически уникальный 128-битный идентификатор. Записывается в виде строки из 32 шестнадцатеричных цифр, разбитых на группы дефисами. Формируется на стороне Мастер-системы'), blank=True, null=True, default=None, editable=False, db_column='test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None)",
+  "description": "_('Globally Unique Identifier — статистически уникальный 128-битный идентификатор. Записывается в виде строки из 32 шестнадцатеричных цифр, разбитых на группы дефисами. Формируется на стороне Мастер-системы')",
+  "field_format": "uuid",
+  "field_type_from_format": "models.UUIDField",
+  "field_type_mapping": {
+    "boolean": "models.BooleanField",
+    "integer": "(models.BigIntegerField if getattr(settings, 'MDM_MODELS_BIGINT_ON', False) else models.IntegerField)",
+    "number": "models.DecimalField",
+    "string": "models.UUIDField"
+  },
+  "fk_model_name": null,
+  "guid_kwargs": {},
+  "has_object_enums": false,
+  "is_blank_kwarg": true,
+  "is_force_blank_enabled": true,
+  "is_force_null_enabled": true,
+  "is_null_kwarg": true,
+  "is_nullable": false,
+  "is_object": false,
+  "is_required": false,
+  "kwargs": {
+    "blank": true,
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "default": null,
+    "editable": false,
+    "help_text": "_('Globally Unique Identifier — статистически уникальный 128-битный идентификатор. Записывается в виде строки из 32 шестнадцатеричных цифр, разбитых на группы дефисами. Формируется на стороне Мастер-системы')",
+    "null": true,
+    "verbose_name": "_('Guid')"
+  },
+  "no_clean_kwargs": {
+    "blank": true,
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "default": null,
+    "editable": false,
+    "help_text": "_('Globally Unique Identifier — статистически уникальный 128-битный идентификатор. Записывается в виде строки из 32 шестнадцатеричных цифр, разбитых на группы дефисами. Формируется на стороне Мастер-системы')",
+    "null": true,
+    "verbose_name": "_('Guid')"
+  },
+  "optional_kwargs": {
+    "blank": true,
+    "null": true
+  },
+  "schema_enum": null,
+  "schema_type": "string",
+  "title": "_('Guid')",
+  "type": "models.UUIDField",
+  "type_kwargs": {}
+}

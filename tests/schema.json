@@ -1,0 +1,6 @@
+{
+  "type": "boolean",
+  "title": "Булево",
+  "description": "Пример значения 'boolean'",
+  "nullable": true
+}

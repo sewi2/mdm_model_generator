@@ -1,0 +1,16 @@
+{
+  "type": "integer",
+  "title": "Перечисление(Целое число)",
+  "description": "Пример значения 'enum+integer'",
+  "enum": [
+    1,
+    2,
+    3
+  ],
+  "x-enumNames": [
+    "Значение1",
+    "Значение2",
+    "Значение3"
+  ],
+  "nullable": true
+}

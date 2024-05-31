@@ -1,0 +1,116 @@
+{
+  "_field_type_kwargs_mapping": {
+    "LazyField": {
+      "allow_blank": null,
+      "path": "'BaseNoneSerializer'"
+    },
+    "serializers.BooleanField": {
+      "allow_blank": null
+    },
+    "serializers.CharField": {
+      "max_length": 255
+    },
+    "serializers.ChoiceField": {},
+    "serializers.DateField": {
+      "allow_blank": null
+    },
+    "serializers.DateTimeField": {
+      "allow_blank": null
+    },
+    "serializers.DecimalField": {
+      "allow_blank": null,
+      "decimal_places": 2,
+      "max_digits": 12,
+      "max_value": null,
+      "min_value": null
+    },
+    "serializers.EmailField": {
+      "allow_blank": null
+    },
+    "serializers.IntegerField": {
+      "allow_blank": null,
+      "max_value": null,
+      "min_value": null
+    },
+    "serializers.JSONField": {
+      "allow_blank": null,
+      "default": "dict",
+      "help_text": "_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)')"
+    },
+    "serializers.UUIDField": {
+      "allow_blank": null
+    }
+  },
+  "_jsonfield_help_text_kwargs": {
+    "help_text": "_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)')"
+  },
+  "_name": "test_field",
+  "_required_fields": [],
+  "_schema": {
+    "description": "Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)",
+    "maxLength": 255,
+    "nullable": false,
+    "title": "Type",
+    "type": "string"
+  },
+  "_serializer_name": "TestModelSerializer",
+  "choices_kwargs": {},
+  "clean_kwargs": {
+    "allow_blank": true,
+    "allow_null": true,
+    "help_text": "_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)')",
+    "label": "_('Type')",
+    "max_length": 255
+  },
+  "default_kwargs": {
+    "allow_blank": true,
+    "allow_null": true,
+    "help_text": "_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)')",
+    "label": "_('Type')"
+  },
+  "definition": "serializers.CharField(label=_('Type'), help_text=_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)'), allow_blank=True, allow_null=True, max_length=255)",
+  "description": "_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)')",
+  "field_format": null,
+  "field_type_from_format": "serializers.CharField",
+  "field_type_mapping": {
+    "boolean": "serializers.BooleanField",
+    "integer": "serializers.IntegerField",
+    "number": "serializers.DecimalField",
+    "string": "serializers.CharField"
+  },
+  "fk_model_name": null,
+  "guid_kwargs": {},
+  "has_object_enums": false,
+  "is_blank_kwarg": true,
+  "is_force_blank_enabled": true,
+  "is_force_null_enabled": true,
+  "is_null_kwarg": true,
+  "is_nullable": false,
+  "is_object": false,
+  "is_required": false,
+  "kwargs": {
+    "allow_blank": true,
+    "allow_null": true,
+    "help_text": "_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)')",
+    "label": "_('Type')",
+    "max_length": 255
+  },
+  "no_clean_kwargs": {
+    "allow_blank": true,
+    "allow_null": true,
+    "help_text": "_('Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)')",
+    "label": "_('Type')",
+    "max_length": 255
+  },
+  "optional_kwargs": {
+    "allow_blank": true,
+    "allow_null": true
+  },
+  "schema_enum": null,
+  "schema_type": "string",
+  "title": "_('Type')",
+  "type": "serializers.CharField",
+  "type_kwargs": {
+    "max_length": 255
+  }
+}

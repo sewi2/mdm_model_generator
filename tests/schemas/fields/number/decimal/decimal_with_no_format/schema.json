@@ -1,0 +1,9 @@
+{
+  "type": "number",
+  "minimum": -1000000000000,
+  "maximum": 1000000000000,
+  "multipleOf": 0.0001,
+  "title": "Число",
+  "description": "Пример значения 'number'",
+  "nullable": true
+}

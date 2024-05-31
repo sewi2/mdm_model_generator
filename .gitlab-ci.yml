@@ -1,0 +1,69 @@
+# v1
+
+image:
+  name: cr.yandex/crpia5dgh67v09sbman3/pik-ci-utils:v1.0.27-rc43
+  entrypoint: [""]
+
+
+
+stages:
+  - pre-ci
+
+
+###############################################################################
+# RULES
+###############################################################################
+.CHECK_LAST_TEST_RULE: &CHECK_SUCCESS_TEST_RULE
+  - if: $CI_COMMIT_TAG && $SKIP_TESTS != "TRUE"
+    when: delayed
+    start_in: 10 seconds
+###############################################################################
+# RULES
+###############################################################################
+
+
+###############################################################################
+# .PRE
+###############################################################################
+check-success-test:
+  stage: .pre
+  rules:
+    *CHECK_SUCCESS_TEST_RULE
+  retry:
+    max: 2
+  script:
+    - check_success_test
+###############################################################################
+# .PRE
+###############################################################################
+
+
+###############################################################################
+# PRE CI
+###############################################################################
+prepare-variables:
+  stage: pre-ci
+  script:
+    - CONTOUR=$(get_contour)
+    - VERSION=$(get_version --contour "$CONTOUR")
+    - echo "CONTOUR=$CONTOUR" >> prepare-variables.env
+    - echo "VERSION=$VERSION" >> prepare-variables.env
+    - cat prepare-variables.env
+  artifacts:
+    reports:
+      dotenv: prepare-variables.env
+
+ci-trigger:
+  stage: pre-ci
+  needs:
+    - job: prepare-variables
+      artifacts: true
+  trigger:
+    include: .gitlab-ci-main.yml
+    strategy: depend
+  variables:
+    CONTOUR: $CONTOUR
+    VERSION: $VERSION
+###############################################################################
+# PRE CI
+###############################################################################

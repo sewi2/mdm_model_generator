@@ -1,0 +1,36 @@
+test-warnings: true
+strictness: veryhigh
+
+ignore-paths:
+  - .venv
+  - _project_/settings_local.py
+  - templates
+  - README.md
+  - venv
+  - pik
+  - django-documents-tools
+  - tests/schemas
+
+ignore-patterns:
+   - .*/fields.py
+
+pylint:
+  disable:
+    - unused-argument
+    - too-few-public-methods
+    - too-many-arguments
+    - too-many-ancestors
+    - redefined-outer-name
+    - relative-beyond-top-level
+    - logging-fstring-interpolation
+    - no-else-return
+    - too-many-instance-attributes
+    - not-an-iterable
+    - too-many-lines
+    - import-outside-toplevel
+    - unnecessary-pass
+    - invalid-str-returned
+    - unnecessary-comprehension
+    - protected-access
+    - django-not-configured
+    - consider-using-f-string

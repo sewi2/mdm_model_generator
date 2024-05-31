@@ -1,0 +1,133 @@
+{
+  "_field_type_kwargs_mapping": {
+    "LazyField": {
+      "allow_blank": null,
+      "path": "'BaseNoneSerializer'"
+    },
+    "serializers.BooleanField": {
+      "allow_blank": null
+    },
+    "serializers.CharField": {
+      "max_length": 255
+    },
+    "serializers.ChoiceField": {
+      "choices": "base_models.BaseTestModelSerializer.TEST_FIELD_CHOICES"
+    },
+    "serializers.DateField": {
+      "allow_blank": null
+    },
+    "serializers.DateTimeField": {
+      "allow_blank": null
+    },
+    "serializers.DecimalField": {
+      "allow_blank": null,
+      "decimal_places": 2,
+      "max_digits": 12,
+      "max_value": null,
+      "min_value": null
+    },
+    "serializers.EmailField": {
+      "allow_blank": null
+    },
+    "serializers.IntegerField": {
+      "allow_blank": null,
+      "max_value": null,
+      "min_value": null
+    },
+    "serializers.JSONField": {
+      "allow_blank": null,
+      "default": "dict",
+      "help_text": "_(\"Пример значения 'enum+integer'\")"
+    },
+    "serializers.UUIDField": {
+      "allow_blank": null
+    }
+  },
+  "_jsonfield_help_text_kwargs": {
+    "help_text": "_(\"Пример значения 'enum+integer'\")"
+  },
+  "_name": "test_field",
+  "_required_fields": [],
+  "_schema": {
+    "description": "Пример значения 'enum+integer'",
+    "enum": [
+      1,
+      2,
+      3
+    ],
+    "nullable": true,
+    "title": "Перечисление(Целое число)",
+    "type": "integer",
+    "x-enumNames": [
+      "Значение1",
+      "Значение2",
+      "Значение3"
+    ]
+  },
+  "_serializer_name": "TestModelSerializer",
+  "choices_kwargs": {
+    "choices": "base_models.BaseTestModelSerializer.TEST_FIELD_CHOICES"
+  },
+  "clean_kwargs": {
+    "allow_blank": true,
+    "allow_null": true,
+    "choices": "base_models.BaseTestModelSerializer.TEST_FIELD_CHOICES",
+    "help_text": "_(\"Пример значения 'enum+integer'\")",
+    "label": "_('Перечисление(Целое число)')"
+  },
+  "default_kwargs": {
+    "allow_blank": true,
+    "allow_null": true,
+    "help_text": "_(\"Пример значения 'enum+integer'\")",
+    "label": "_('Перечисление(Целое число)')"
+  },
+  "definition": "serializers.ChoiceField(label=_('Перечисление(Целое число)'), help_text=_(\"Пример значения 'enum+integer'\"), allow_blank=True, allow_null=True, choices=base_models.BaseTestModelSerializer.TEST_FIELD_CHOICES)",
+  "description": "_(\"Пример значения 'enum+integer'\")",
+  "field_format": null,
+  "field_type_from_format": "serializers.CharField",
+  "field_type_mapping": {
+    "boolean": "serializers.BooleanField",
+    "integer": "serializers.IntegerField",
+    "number": "serializers.DecimalField",
+    "string": "serializers.CharField"
+  },
+  "fk_model_name": null,
+  "guid_kwargs": {},
+  "has_object_enums": false,
+  "is_blank_kwarg": true,
+  "is_force_blank_enabled": true,
+  "is_force_null_enabled": true,
+  "is_null_kwarg": true,
+  "is_nullable": true,
+  "is_object": false,
+  "is_required": false,
+  "kwargs": {
+    "allow_blank": true,
+    "allow_null": true,
+    "choices": "base_models.BaseTestModelSerializer.TEST_FIELD_CHOICES",
+    "help_text": "_(\"Пример значения 'enum+integer'\")",
+    "label": "_('Перечисление(Целое число)')"
+  },
+  "no_clean_kwargs": {
+    "allow_blank": true,
+    "allow_null": true,
+    "choices": "base_models.BaseTestModelSerializer.TEST_FIELD_CHOICES",
+    "help_text": "_(\"Пример значения 'enum+integer'\")",
+    "label": "_('Перечисление(Целое число)')"
+  },
+  "optional_kwargs": {
+    "allow_blank": true,
+    "allow_null": true
+  },
+  "schema_enum": [
+    1,
+    2,
+    3
+  ],
+  "schema_type": "integer",
+  "title": "_('Перечисление(Целое число)')",
+  "type": "serializers.ChoiceField",
+  "type_kwargs": {
+    "choices": "base_models.BaseTestModelSerializer.TEST_FIELD_CHOICES"
+  }
+}

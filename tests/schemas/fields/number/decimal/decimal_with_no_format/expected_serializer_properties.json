@@ -1,0 +1,129 @@
+{
+  "_field_type_kwargs_mapping": {
+    "LazyField": {
+      "allow_blank": null,
+      "path": "'BaseNoneSerializer'"
+    },
+    "serializers.BooleanField": {
+      "allow_blank": null
+    },
+    "serializers.CharField": {
+      "max_length": 255
+    },
+    "serializers.ChoiceField": {},
+    "serializers.DateField": {
+      "allow_blank": null
+    },
+    "serializers.DateTimeField": {
+      "allow_blank": null
+    },
+    "serializers.DecimalField": {
+      "allow_blank": null,
+      "decimal_places": 4,
+      "max_digits": 17,
+      "max_value": 1000000000000,
+      "min_value": -1000000000000
+    },
+    "serializers.EmailField": {
+      "allow_blank": null
+    },
+    "serializers.IntegerField": {
+      "allow_blank": null,
+      "max_value": 1000000000000,
+      "min_value": -1000000000000
+    },
+    "serializers.JSONField": {
+      "allow_blank": null,
+      "default": "dict",
+      "help_text": "_(\"Пример значения 'number'\")"
+    },
+    "serializers.UUIDField": {
+      "allow_blank": null
+    }
+  },
+  "_jsonfield_help_text_kwargs": {
+    "help_text": "_(\"Пример значения 'number'\")"
+  },
+  "_name": "test_field",
+  "_required_fields": [],
+  "_schema": {
+    "description": "Пример значения 'number'",
+    "maximum": 1000000000000,
+    "minimum": -1000000000000,
+    "multipleOf": 0.0001,
+    "nullable": true,
+    "title": "Число",
+    "type": "number"
+  },
+  "_serializer_name": "TestModelSerializer",
+  "choices_kwargs": {},
+  "clean_kwargs": {
+    "allow_null": true,
+    "decimal_places": 4,
+    "help_text": "_(\"Пример значения 'number'\")",
+    "label": "_('Число')",
+    "max_digits": 17,
+    "max_value": 1000000000000,
+    "min_value": -1000000000000
+  },
+  "default_kwargs": {
+    "allow_blank": true,
+    "allow_null": true,
+    "help_text": "_(\"Пример значения 'number'\")",
+    "label": "_('Число')"
+  },
+  "definition": "serializers.DecimalField(label=_('Число'), help_text=_(\"Пример значения 'number'\"), allow_null=True, max_digits=17, decimal_places=4, min_value=-1000000000000, max_value=1000000000000)",
+  "description": "_(\"Пример значения 'number'\")",
+  "field_format": null,
+  "field_type_from_format": "serializers.CharField",
+  "field_type_mapping": {
+    "boolean": "serializers.BooleanField",
+    "integer": "serializers.IntegerField",
+    "number": "serializers.DecimalField",
+    "string": "serializers.CharField"
+  },
+  "fk_model_name": null,
+  "guid_kwargs": {},
+  "has_object_enums": false,
+  "is_blank_kwarg": true,
+  "is_force_blank_enabled": true,
+  "is_force_null_enabled": true,
+  "is_null_kwarg": true,
+  "is_nullable": true,
+  "is_object": false,
+  "is_required": false,
+  "kwargs": {
+    "allow_null": true,
+    "decimal_places": 4,
+    "help_text": "_(\"Пример значения 'number'\")",
+    "label": "_('Число')",
+    "max_digits": 17,
+    "max_value": 1000000000000,
+    "min_value": -1000000000000
+  },
+  "no_clean_kwargs": {
+    "allow_blank": null,
+    "allow_null": true,
+    "decimal_places": 4,
+    "help_text": "_(\"Пример значения 'number'\")",
+    "label": "_('Число')",
+    "max_digits": 17,
+    "max_value": 1000000000000,
+    "min_value": -1000000000000
+  },
+  "optional_kwargs": {
+    "allow_blank": true,
+    "allow_null": true
+  },
+  "schema_enum": null,
+  "schema_type": "number",
+  "title": "_('Число')",
+  "type": "serializers.DecimalField",
+  "type_kwargs": {
+    "allow_blank": null,
+    "decimal_places": 4,
+    "max_digits": 17,
+    "max_value": 1000000000000,
+    "min_value": -1000000000000
+  }
+}

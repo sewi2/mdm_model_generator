@@ -1,10 +1,12 @@
-# Version 2
+# Version 8
 
 jinja2
-prance
-openapi_spec_validator
-djangorestframework-camel-case
-# djangorestframework-camel-case needs Django and djangorestframework
-Django
-djangorestframework
--e git+https://github.com/pik-software/pik-django-utils.git@add-drf#egg=pik_django_utils
+# https://stackoverflow.com/questions/1960516/python-json-serialize-a-decimal-object
+simplejson>=3.18.4
+pik_django_utils @ git+https://github.com/pik-software/pik-django-utils.git@add-drf
+
+# tests
+pytest
+pytest-cov
+prospector
+mypy

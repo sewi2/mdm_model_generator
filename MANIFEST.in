@@ -4,4 +4,4 @@ include README.md
 include requirements.txt
 
 # Include the data files
-recursive-include openapi_model_generator/templates *
+recursive-include mdm_model_generator/templates *

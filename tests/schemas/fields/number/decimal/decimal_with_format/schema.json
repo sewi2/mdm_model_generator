@@ -1,0 +1,10 @@
+{
+  "type": "number",
+  "format": "decimal",
+  "minimum": -1000000000000,
+  "maximum": 1000000000000,
+  "multipleOf": 0.0001,
+  "title": "Десятичное число",
+  "description": "Пример значения 'number', формат 'decimal'",
+  "nullable": true
+}

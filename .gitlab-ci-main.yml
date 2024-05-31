@@ -1,0 +1,105 @@
+# TODO: remove FEATURE_RELEASE_RULES and TAG_PATTERN after merge test2master.
+
+# TODO: update to python-base:v1.16.0
+image: cr.yandex/crpia5dgh67v09sbman3/python-base:v1.14.2
+
+
+stages:
+  - test
+  - build
+  - deploy
+
+
+###############################################################################
+# RULES
+###############################################################################
+.TEST_RULE: &TEST_RULE
+  - if: $CI_COMMIT_TAG == null || $CI_COMMIT_TAG == ""
+.DEPLOY_RULE: &DEPLOY_RULE
+  - if: ($CONTOUR == "test" || $CONTOUR == "prod")
+###############################################################################
+# RULES
+###############################################################################
+
+
+###############################################################################
+# TEST
+###############################################################################
+test:
+  stage: test
+  rules:
+    *TEST_RULE
+  cache:
+    key:
+      files:
+        - requirements.txt
+    paths:
+      - .cache/pip
+    policy: pull-push
+  before_script:
+    - pip install -U pip -r requirements.txt
+    - pip freeze
+  script:
+    - pip check
+    - prospector -X --profile-path . --profile .prospector.yaml .
+    - pytest --cov . --junitxml=/tmp/junit.xml 
+      --cov-config .coveragerc --durations=0 -s
+    - python -m mdm_model_generator tests/schemas/schema.esb.json mdm_models
+    - mypy mdm_model_generator tests --install-types --non-interactive
+  artifacts:
+    paths:
+      - junit.xml
+    when: always
+###############################################################################
+# TEST
+###############################################################################
+
+
+###############################################################################
+# BUILD
+###############################################################################
+build:
+  stage: build
+  rules:
+    *DEPLOY_RULE
+  script:
+    - PACKAGE_VERSION=${VERSION#v}  # Cut leading 'v'.
+    - sed -i "s/__VERSION__/$PACKAGE_VERSION/" setup.py
+    - sed -i "s/__VERSION__/$PACKAGE_VERSION/" mdm_model_generator/__init__.py
+    - python setup.py sdist
+  artifacts:
+    paths:
+      - dist
+    when: always
+###############################################################################
+# BUILD
+###############################################################################
+
+
+###############################################################################
+# DEPLOY
+###############################################################################
+deploy:
+  stage: deploy
+  rules:
+    *DEPLOY_RULE
+  needs:
+    - build
+  dependencies:
+    - build
+  before_script:
+    - pip install twine
+  script:
+    - twine upload dist/* --verbose
+  variables:
+    PIP_EXTRA_INDEX_URL: $PYTHON_REPOSITORY_AUTH_URL
+    TWINE_REPOSITORY_URL: $PYTHON_REPOSITORY_URL
+    TWINE_USERNAME: $PYTHON_REPOSITORY_USERNAME
+    TWINE_PASSWORD: $PYTHON_REPOSITORY_PASSWORD
+  artifacts:
+    paths:
+      - dist
+    when: always
+###############################################################################
+# DEPLOY
+###############################################################################

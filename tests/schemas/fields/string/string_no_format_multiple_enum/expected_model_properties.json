@@ -1,0 +1,108 @@
+{
+  "_app": "test",
+  "_fk_related_model": null,
+  "_is_camelcase_enabled": "getattr(settings, 'MDM_MODELS_CAMEL_CASE', False)",
+  "_is_db_index_field": false,
+  "_model_name": "TestModel",
+  "_name": "test_field",
+  "_name_kwargs": {},
+  "_required_fields": [],
+  "_schema": {
+    "description": "Пример значения 'enum+string'",
+    "enum": [
+      "enumValue1",
+      "enumValue2",
+      "enumValue3"
+    ],
+    "maxLength": 50,
+    "nullable": true,
+    "title": "Перечисление(Строка)",
+    "type": "string",
+    "x-enumNames": [
+      "Значение1",
+      "Значение2",
+      "Значение3"
+    ]
+  },
+  "_tag_groups": [],
+  "choices_kwargs": {
+    "choices": "TEST_FIELD_CHOICES"
+  },
+  "clean_kwargs": {
+    "blank": true,
+    "choices": "TEST_FIELD_CHOICES",
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "default": null,
+    "editable": false,
+    "help_text": "_(\"Пример значения 'enum+string'\")",
+    "max_length": 50,
+    "null": true,
+    "verbose_name": "_('Перечисление(Строка)')"
+  },
+  "default_kwargs": {
+    "blank": true,
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "default": null,
+    "editable": false,
+    "help_text": "_(\"Пример значения 'enum+string'\")",
+    "null": true,
+    "verbose_name": "_('Перечисление(Строка)')"
+  },
+  "definition": "models.CharField(verbose_name=_('Перечисление(Строка)'), help_text=_(\"Пример значения 'enum+string'\"), blank=True, null=True, default=None, editable=False, db_column='test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None, choices=TEST_FIELD_CHOICES, max_length=50)",
+  "description": "_(\"Пример значения 'enum+string'\")",
+  "field_format": null,
+  "field_type_from_format": "models.CharField",
+  "field_type_mapping": {
+    "boolean": "models.BooleanField",
+    "integer": "(models.BigIntegerField if getattr(settings, 'MDM_MODELS_BIGINT_ON', False) else models.IntegerField)",
+    "number": "models.DecimalField",
+    "string": "models.CharField"
+  },
+  "fk_model_name": null,
+  "guid_kwargs": {},
+  "has_object_enums": false,
+  "is_blank_kwarg": true,
+  "is_force_blank_enabled": true,
+  "is_force_null_enabled": true,
+  "is_null_kwarg": true,
+  "is_nullable": true,
+  "is_object": false,
+  "is_required": false,
+  "kwargs": {
+    "blank": true,
+    "choices": "TEST_FIELD_CHOICES",
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "default": null,
+    "editable": false,
+    "help_text": "_(\"Пример значения 'enum+string'\")",
+    "max_length": 50,
+    "null": true,
+    "verbose_name": "_('Перечисление(Строка)')"
+  },
+  "no_clean_kwargs": {
+    "blank": true,
+    "choices": "TEST_FIELD_CHOICES",
+    "db_column": "'test_field' if getattr(settings, 'MDM_MODELS_CAMEL_CASE', False) else None",
+    "default": null,
+    "editable": false,
+    "help_text": "_(\"Пример значения 'enum+string'\")",
+    "max_length": 50,
+    "null": true,
+    "verbose_name": "_('Перечисление(Строка)')"
+  },
+  "optional_kwargs": {
+    "blank": true,
+    "null": true
+  },
+  "schema_enum": [
+    "enumValue1",
+    "enumValue2",
+    "enumValue3"
+  ],
+  "schema_type": "string",
+  "title": "_('Перечисление(Строка)')",
+  "type": "models.CharField",
+  "type_kwargs": {
+    "max_length": 50
+  }
+}

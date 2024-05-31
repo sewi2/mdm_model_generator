@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "maxLength": 255,
+  "title": "Type",
+  "description": "Человекочитаемое наименование сущности. Совпадает с наименованием Контракта ({entity}.json)",
+  "enum": [
+    "BenchmarkCatalogObjectHeader"
+  ],
+  "nullable": false
+}

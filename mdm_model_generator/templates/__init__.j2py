@@ -1,0 +1,3 @@
+__version__ = '{{ version }}'
+__generator_version__ = '{{ generator_version }}'
+__entities_version__ = '{{ entities_version }}'

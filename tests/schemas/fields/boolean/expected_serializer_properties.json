@@ -1,0 +1,110 @@
+{
+  "_field_type_kwargs_mapping": {
+    "LazyField": {
+      "allow_blank": null,
+      "path": "'BaseNoneSerializer'"
+    },
+    "serializers.BooleanField": {
+      "allow_blank": null
+    },
+    "serializers.CharField": {
+      "max_length": 255
+    },
+    "serializers.ChoiceField": {},
+    "serializers.DateField": {
+      "allow_blank": null
+    },
+    "serializers.DateTimeField": {
+      "allow_blank": null
+    },
+    "serializers.DecimalField": {
+      "allow_blank": null,
+      "decimal_places": 2,
+      "max_digits": 12,
+      "max_value": null,
+      "min_value": null
+    },
+    "serializers.EmailField": {
+      "allow_blank": null
+    },
+    "serializers.IntegerField": {
+      "allow_blank": null,
+      "max_value": null,
+      "min_value": null
+    },
+    "serializers.JSONField": {
+      "allow_blank": null,
+      "default": "dict",
+      "help_text": "_(\"Пример значения 'boolean'\")"
+    },
+    "serializers.UUIDField": {
+      "allow_blank": null
+    }
+  },
+  "_jsonfield_help_text_kwargs": {
+    "help_text": "_(\"Пример значения 'boolean'\")"
+  },
+  "_name": "test_field",
+  "_required_fields": [],
+  "_schema": {
+    "description": "Пример значения 'boolean'",
+    "nullable": true,
+    "title": "Булево",
+    "type": "boolean"
+  },
+  "_serializer_name": "TestModelSerializer",
+  "choices_kwargs": {},
+  "clean_kwargs": {
+    "allow_null": true,
+    "help_text": "_(\"Пример значения 'boolean'\")",
+    "label": "_('Булево')"
+  },
+  "default_kwargs": {
+    "allow_blank": true,
+    "allow_null": true,
+    "help_text": "_(\"Пример значения 'boolean'\")",
+    "label": "_('Булево')"
+  },
+  "definition": "serializers.BooleanField(label=_('Булево'), help_text=_(\"Пример значения 'boolean'\"), allow_null=True)",
+  "description": "_(\"Пример значения 'boolean'\")",
+  "field_format": null,
+  "field_type_from_format": "serializers.CharField",
+  "field_type_mapping": {
+    "boolean": "serializers.BooleanField",
+    "integer": "serializers.IntegerField",
+    "number": "serializers.DecimalField",
+    "string": "serializers.CharField"
+  },
+  "fk_model_name": null,
+  "guid_kwargs": {},
+  "has_object_enums": false,
+  "is_blank_kwarg": true,
+  "is_force_blank_enabled": true,
+  "is_force_null_enabled": true,
+  "is_null_kwarg": true,
+  "is_nullable": true,
+  "is_object": false,
+  "is_required": false,
+  "kwargs": {
+    "allow_null": true,
+    "help_text": "_(\"Пример значения 'boolean'\")",
+    "label": "_('Булево')"
+  },
+  "no_clean_kwargs": {
+    "allow_blank": null,
+    "allow_null": true,
+    "help_text": "_(\"Пример значения 'boolean'\")",
+    "label": "_('Булево')"
+  },
+  "optional_kwargs": {
+    "allow_blank": true,
+    "allow_null": true
+  },
+  "schema_enum": null,
+  "schema_type": "boolean",
+  "title": "_('Булево')",
+  "type": "serializers.BooleanField",
+  "type_kwargs": {
+    "allow_blank": null
+  }
+}

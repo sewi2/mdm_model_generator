@@ -1,0 +1,54 @@
+from pik.api.viewsets import RestQLStandardizedModelViewSet
+
+from . import base_serializers
+from . import base_filters
+
+
+{% for model in models %}
+class Base{{model.__name__}}ViewSet(
+        RestQLStandardizedModelViewSet):
+
+    lookup_field = 'uid'
+    lookup_url_kwarg = 'guid'
+    ordering = '-created'
+    serializer_class = base_serializers.Base{{model.__name__}}Serializer
+    filterset_class = base_filters.Base{{model.__name__}}Filter
+    allow_history = False
+    {% if relations.get(model.__name__) %}
+    prefetch_related = {
+    {% for key, value in relations.get(model.__name__).items() %}
+        {{ key.__repr__() }}: (
+            {{ value.__repr__() }}),
+    {% endfor %}
+    }
+    {% endif%}
+
+    search_fields = (
+        {% for field in model._meta.get_fields() %}
+            {% if field|is_text_field %}
+        '{{field.name}}',
+            {% endif %}
+        {%endfor%}
+    )
+    ordering_fields =  (
+        {% for field in model._meta.get_fields() %}
+            {% if field.__class__.__name__ in ('CharField', 'DateTimeField', 'DateField', 'TextField', 'IntegerField', 'DecimalField', 'FloatField') or field.primary_key %}
+        '{{field.name}}',
+            {% endif %}
+        {%endfor%}
+    )
+    default_restql_query = {'include': [
+        '*',
+        {% for field in model._meta.get_fields() %}
+            {% if field.__class__.__name__ in ('ForeignKey', ) %}
+        {'{{field.name}}': {
+            'include': ['guid', 'type'], 'exclude': [],
+            'arguments': {}, 'aliases': {}}},
+            {% endif %}
+        {% endfor %}
+    ], 'exclude': [], 'arguments': {}, 'aliases': {}}
+{% if not loop.last %}
+
+
+{% endif %}
+{% endfor %}

@@ -1,0 +1,61 @@
+from pik.api.viewsets import RestQLStandardizedModelViewSet
+
+from . import base_serializers
+from . import base_filters
+
+
+{% for name, definition in definitions.items() %}
+class Base{{name}}ViewSet(RestQLStandardizedModelViewSet):
+
+    lookup_field = 'uid'
+    lookup_url_kwarg = 'guid'
+    ordering = '-created'
+    serializer_class = base_serializers.Base{{name}}Serializer
+    filterset_class = base_filters.Base{{name}}Filter
+    allow_history = False
+    {% if relations.get(name) %}
+    prefetch_related = {
+    {% for key, value in relations.get(name).items() %}
+        {% if key != 'type' %}
+        {{ key.__repr__() }}: (
+            {{ value.__repr__() }}),
+        {% endif %}
+    {% endfor %}
+    }
+    {% endif%}
+
+    search_fields = (
+        {% for prop_name, property in definition.get("properties", {}).items() %}
+            {% if property|is_text_field %}
+                {% if prop_name|to_field_name != 'type' %}
+        '{{ prop_name|to_field_name }}',
+                {% endif %}
+            {% endif %}
+        {%endfor%}
+    )
+    ordering_fields = (
+        {% for prop_name, property in definition.get("properties", {}).items() %}
+            {% if property|is_text_field or property|is_dated_string or property|is_number_field or prop_name == "guid" %}
+                {% if prop_name|to_field_name != 'type' %}
+        '{{ prop_name|to_field_name }}',
+                {% endif %}
+            {% endif %}
+        {%endfor%}
+    )
+    default_restql_query = {'include': [
+        '*',
+        {% for prop_name, property in definition.get("properties", {}).items() %}
+            {% if property|is_fk_field %}
+                {% if prop_name|to_field_name != 'type' %}
+        {'{{ prop_name|to_field_name }}': {
+            'include': ['guid', 'type'], 'exclude': [],
+            'arguments': {}, 'aliases': {}}},
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    ], 'exclude': [], 'arguments': {}, 'aliases': {}}
+{% if not loop.last %}
+
+
+{% endif %}
+{% endfor %}

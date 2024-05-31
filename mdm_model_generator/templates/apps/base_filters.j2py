@@ -1,0 +1,33 @@
+from rest_framework_filters import AutoFilter
+from pik.api.filters import StandardizedFilterSet
+
+from . import base_models as base_module
+
+
+{% for name, definition in definitions.items() %}
+class Base{{name}}Filter(StandardizedFilterSet):
+    {% for prop_name, property in definition.get("properties", {}).items() %}
+        {% if prop_name|to_field_name != 'type' %}
+            {% if property['type'] != 'object' and property['type'] != 'array' %}
+                {% if property['type'] == 'boolean' %}
+    {{ prop_name|to_field_name }} = AutoFilter(lookups=['exact', 'in', 'isnull'])
+                {% elif property['type'] == 'string' and not property.get('format') %}
+    {{ prop_name|to_field_name }} = AutoFilter(lookups=['exact', 'iexact', 'in', 'startswith', 'endswith', 'contains', 'isnull'])
+                {% elif property['type'] == 'string' and property.get('format') in ('date-time', 'date', 'uuid') %}
+    {{ prop_name|to_field_name }} = AutoFilter(lookups=['exact', 'gt', 'gte', 'lt', 'lte', 'in', 'isnull'])
+                {% elif property['type'] in ('integer', 'number') %}
+    {{ prop_name|to_field_name }} = AutoFilter(lookups=['exact', 'gt', 'gte', 'lt', 'lte', 'in', 'isnull'])
+                {% else %}
+    {{ prop_name|to_field_name }} = AutoFilter(lookups='__all__')
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+    class Meta:
+        fields = ()
+{% if not loop.last %}
+
+
+{% endif %}
+{% endfor %}
